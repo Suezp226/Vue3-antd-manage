@@ -5,11 +5,13 @@
       :style="{ margin: '0px', padding: '0 20px', background: '#fff', minHeight: '280px' }">
       <div class="fix-top" ></div>
       <slot></slot>
+      <div class="fix-right" ></div>
     </a-tab-pane>
   </a-tabs>
 </template>
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
+import { useRouter, useRoute } from 'vue-router';
 
 export default defineComponent({
   setup() {
@@ -22,12 +24,12 @@ export default defineComponent({
     const activeKey = ref(panes.value[0].key);
     const newTabIndex = ref(0);
 
-    const add = () => {
+    const add = (title: string, content: string, key: string) => {
       activeKey.value = `newTab${newTabIndex.value++}`;
       panes.value.push({
-        title: `New Tab ${activeKey.value}`,
-        content: `Content of new Tab ${activeKey.value}`,
-        key: activeKey.value,
+        title: title,
+        content: content,
+        key: key
       });
     };
 
@@ -48,8 +50,19 @@ export default defineComponent({
       }
     };
 
+
+    const router = useRouter();
     const onEdit = (targetKey: string) => {
       remove(targetKey);
+      if(panes.value.length == 0) {
+        add('Home','Home-content','home');
+        activeKey.value = 'home';
+        router.push({
+          path: '/home'
+        })
+      }
+      // 这里应该添加一个Home
+      
     };
 
     return {
@@ -67,6 +80,7 @@ export default defineComponent({
     height: 100%;
     background: #fff;
     margin: 0px 0px 20px 15px;
+    position: relative;
     box-sizing: border-box;
     overflow-y: auto;
     overflow-x: hidden;
@@ -75,8 +89,16 @@ export default defineComponent({
     position: relative;
     width: 140%;
     left: -20px;
-    height:20px;
+    height: 20px;
     background-color:#f0f2f5;
+  }
+  .fix-right {
+    position: absolute;
+    height: 100%;
+    right: 0;
+    top: 0px;
+    width: 15px;
+    background: #f0f2f5;
   }
 </style>
 
