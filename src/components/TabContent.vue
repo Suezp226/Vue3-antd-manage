@@ -1,11 +1,12 @@
 <template>
-  <div>
-    <a-tabs v-model:activeKey="activeKey" hide-add type="editable-card" @edit="onEdit">
-      <a-tab-pane v-for="pane in panes" :key="pane.key" :tab="pane.title" :closable="pane.closable">
-        <slot></slot>
-      </a-tab-pane>
-    </a-tabs>
-  </div>
+  <a-tabs v-model:activeKey="activeKey" hide-add type="editable-card" @edit="onEdit" style="height:100%;" 
+    :tabBarStyle="{'margin': 0}">
+    <a-tab-pane v-for="pane in panes" :key="pane.key" :tab="pane.title" :closable="pane.closable" 
+      :style="{ margin: '0px', padding: '0 20px', background: '#fff', minHeight: '280px' }">
+      <div class="fix-top" ></div>
+      <slot></slot>
+    </a-tab-pane>
+  </a-tabs>
 </template>
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
@@ -60,4 +61,22 @@ export default defineComponent({
   },
 });
 </script>
+
+<style lang="less">
+  .ant-tabs-content-holder {
+    height: 100%;
+    background: #fff;
+    margin: 0px 0px 20px 15px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  .fix-top {
+    position: relative;
+    width: 140%;
+    left: -20px;
+    height:20px;
+    background-color:#f0f2f5;
+  }
+</style>
 

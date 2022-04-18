@@ -1,5 +1,5 @@
 <template>
-    <a-menu v-model:selectedKeys="selectedKeys" theme="dark" mode="inline" @click="clickMenu">
+    <a-menu class="menu" v-model:selectedKeys="selectedKeys" theme="dark" mode="inline" @click="clickMenu">
       <a-menu-item key="home">
         <user-outlined />
         <span>Home</span>
@@ -12,6 +12,10 @@
 </template>
 
 <script setup lang="ts">
+    import {
+    UserOutlined,
+    VideoCameraOutlined,
+    } from '@ant-design/icons-vue';
     import { ref } from 'vue'
     const emit = defineEmits(['clickMenu'])
 
@@ -24,5 +28,5 @@
 </script>
 
 <style lang="less">
-    
+   
 </style>

@@ -1,6 +1,6 @@
 <template>
   <a-layout>
-    <a-layout-sider v-model:collapsed="collapsed" :trigger="null" collapsible>
+    <a-layout-sider v-model:collapsed="collapsed" :trigger="null" collapsible class="shadow">
       <div class="logo" >
         LOGO
       </div>
@@ -42,7 +42,6 @@
 
       <!-- Router 内容 -->
       <a-layout-content
-        :style="{ margin: '24px 16px', padding: '0 20px', background: '#fff', minHeight: '280px' }"
       > 
         <tab-content ref="tabContent">
           <router-view></router-view>
@@ -145,5 +144,8 @@ export default defineComponent({
 
 .site-layout .site-layout-background {
   background: #fff;
+}
+.shadow {
+  box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
 }
 </style>
