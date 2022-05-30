@@ -41,7 +41,6 @@
         </template>
         </template>
     </a-table>
-    <div style="height:500px;background-color:skyblue;" ></div>
 </template>
 
 

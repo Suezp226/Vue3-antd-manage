@@ -85,11 +85,15 @@ export default defineComponent({
     overflow-y: auto;
     overflow-x: hidden;
   }
+  .ant-tabs-nav {
+    padding: 8px 0 0 14px;
+    height: 42px;
+  }
   .fix-top {
     position: relative;
     width: 140%;
     left: -20px;
-    height: 20px;
+    height: 10px;
     background-color:#f0f2f5;
   }
   .fix-right {
